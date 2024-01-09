@@ -30,10 +30,10 @@ import * as api from '@/api/blog'
 //   console.log('res',res)
 // })
 
-api.getComment({
-  page: 1,
-	limit: 30,
-	blogId: '1',
-}).then(res=>{
-  console.log('res',res)
-})
+// api.getComment({
+//   page: 1,
+// 	limit: 30,
+// 	blogId: '1',
+// }).then(res=>{
+//   console.log('res',res)
+// })

@@ -3,19 +3,19 @@
     <ul class="list" ref="list">
       <li v-for="item in datas.rows" :key="item.id">
         <div class="thumb">
-          <a href="" v-if="item.thumb">
+          <RouterLink :to="{name:'BlogDetail',params:{id:item.id}}" v-if="item.thumb">
             <img :src="item.thumb" :alt="item.title" :title="item.title" />
-          </a>
+          </RouterLink>
         </div>
         <div class="main">
-          <a href="">
+          <RouterLink :to="{name:'BlogDetail',params:{id:item.id}}">
             <h2>{{ item.title }}</h2>
-          </a>
+          </RouterLink>
           <div class="aside">
             <span>日期：{{formatDate(item.createDate)}}</span>
             <span>浏览：{{item.scanNumber}}</span>
             <span>评论：{{item.commentNumber}}</span>
-            <a href="/article/cate/8" class="">{{ item.category.name }}</a>
+            <RouterLink :to="{name:'BlogCategory',params:{id:item.category.id}}" href="/article/cate/8" class="">{{ item.category.name }}</RouterLink>
           </div>
           <div class="desc">
             {{ item.description }}
@@ -34,6 +34,7 @@ import {getBlog} from '@/api/blog';
 import fatchData from "@/mixins/fatchData";
 import Pager from "@/components/Pager"
 import { formatDate } from "@/util";
+import { RouterLink } from 'vue-router';
 export default {
   name: "BlogList",
   mixins: [fatchData([])],
@@ -42,7 +43,7 @@ export default {
       
     };
   },
-  components: {Pager},
+  components: { Pager, RouterLink },
 
   computed:{
     routerInfo(){

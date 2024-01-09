@@ -61,19 +61,27 @@ Mock.mock(/^\/api\/blog\/.+$/, "get", {
       'commentNumber|1-200': 0,
       'description': "@cparagraph",
       createDate: `@date('T')`,
-      toc:  [
-        { name: "@ctitle", anchor: "title-1" },
+      toc: [
+        { name: "概述", anchor: "article-md-title-1" },
         {
-          name: "@ctitle",
-          anchor: "title-2",
+          name: "简单请求",
+          anchor: "article-md-title-2",
           children: [
-            { name: "@ctitle", anchor: "title-2-1" },
-            { name: "@ctitle", anchor: "title-2-2" },
+            { name: "简单请求的判定", anchor: "article-md-title-3" },
+            { name: "简单请求的交互规范", anchor: "article-md-title-4" },
           ],
         },
         {
-          name: "@ctitle",
-          anchor: "title-3",
+          name: "需要预检的请求",
+          anchor: "article-md-title-5",
+        },
+        {
+          name: "附带身份凭证的请求",
+          anchor: "article-md-title-6",
+        },
+        {
+          name: "一个额外的补充",
+          anchor: "article-md-title-7",
         },
       ],
       thumb: 'https://picsum.photos/300/250?id=@guid',
