@@ -10,15 +10,17 @@
         <RouterView />
       </template>
     </Layout>
+    <ScrollTop />
   </div>
 </template>
 
 <script>
 import Layout from "@/components/Layout";
 import SiteAside from "@/components/SiteAside";
+import ScrollTop from '@/components/ScrollTop';
 export default {
   name: "App",
-  components: { Layout, SiteAside },
+  components: { Layout, SiteAside,ScrollTop },
 };
 </script>
 

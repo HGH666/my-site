@@ -1,7 +1,8 @@
 <template>
   <Layout>
-    <div class="blog-main" v-loading="loading">
+    <div ref="blogMain" class="blog-main" v-loading="loading">
       <BlogDetail :blog="datas" v-if="datas"/>
+      <BlogComment v-if="!loading"/>
     </div>
     <template slot="right"  >
       <div class="blogTOC" v-loading="loading">
@@ -15,19 +16,34 @@
 import Layout from "@/components/Layout";
 import BlogDetail from "./components/BlogDetail";
 import BlogTOC from "./components/BlogTOC";
+import BlogComment from "./components/BlogComment.vue"
 import fatchData from "@/mixins/fatchData"
 import {getBlogDetail} from "@/api/blog"
+import scrollTop from '@/mixins/scrollTop'
 export default {
   name: "Blog",
-  mixins: [fatchData(null)],
-  components: { Layout, BlogDetail,BlogTOC },
+  mixins: [fatchData(null),scrollTop('blogMain')],
+  components: { Layout, BlogDetail, BlogTOC, BlogComment },
   data() {
     return {};
+  },
+  mounted(){
+    // this.$refs.blogMain.addEventListener('scroll',this.handleMainScroll)
+    // this.$bus.$on('setScroll',this.handleSetScroll)
+  },
+  beforeDestroy(){
+    // this.$refs.blogMain.removeEventListener('scroll',this.handleMainScroll)
   },
   methods:{
     fatchData(){
       return getBlogDetail(this.$route.params.id)
-    }
+    },
+    // handleSetScroll(scrollNumber){
+    //   this.$refs.blogMain.scrollTop = scrollNumber
+    // },
+    // handleMainScroll(){
+    //   this.$bus.$emit('mainScroll',this.$refs.blogMain)
+    // }
   }
 };
 </script>

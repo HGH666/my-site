@@ -4,7 +4,7 @@
       <li v-for="item in datas.rows" :key="item.id">
         <div class="thumb">
           <RouterLink :to="{name:'BlogDetail',params:{id:item.id}}" v-if="item.thumb">
-            <img :src="item.thumb" :alt="item.title" :title="item.title" />
+            <img v-lazy="item.thumb" :alt="item.title" :title="item.title" />
           </RouterLink>
         </div>
         <div class="main">
@@ -35,9 +35,10 @@ import fatchData from "@/mixins/fatchData";
 import Pager from "@/components/Pager"
 import { formatDate } from "@/util";
 import { RouterLink } from 'vue-router';
+import scrollTop from '@/mixins/scrollTop';
 export default {
   name: "BlogList",
-  mixins: [fatchData([])],
+  mixins: [fatchData([]),scrollTop('container')],
   data() {
     return {
       
@@ -102,7 +103,7 @@ export default {
   height: 100vh;
   box-sizing: border-box;
   overflow-y: auto;
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
   .list {
     list-style: none;
     margin: 0;

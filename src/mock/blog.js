@@ -35,10 +35,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function (options) {
           },
           "scanNumber|0-3000": 0,
           "commentNumber|0-300": 30,
-          "thumb|1": [
-            'https://picsum.photos/300/250?id=@guid',
-            null,
-          ],
+          "thumb":'https://picsum.photos/300/250?id=@guid',
           createDate: `@date('T')`,
         },
       ],
@@ -285,10 +282,7 @@ Mock.mock("/api/comment", "post", {
     nickname: "@cname",
     content: "@cparagraph(1, 10)",
     createDate: Date.now(),
-    "avatar|1":  [
-      'https://picsum.photos/300/250?id=@guid',
-      null,
-    ],
+    "avatar": 'https://picsum.photos/100/100?id=@guid',
   },
 });
 
@@ -299,17 +293,14 @@ Mock.mock(/^\/api\/comment\/?(\?.+)?$/, "get", function(options) {
     code: 0,
     msg: "",
     data: {
-      "total|50-200": 0,
+      "total": 52,
       [`rows|${query.limit || 10}`]: [
         {
           id: "@guid",
           nickname: "@cname",
           content: "@cparagraph(1, 10)",
           createDate: Date.now(),
-          "avatar|1":  [
-            'https://picsum.photos/300/250?id=@guid',
-            null,
-          ],
+          "avatar":  'https://picsum.photos/100/100?id=@guid',
         },
       ],
     },

@@ -3,14 +3,19 @@ import App from "./App.vue";
 import "@/styles/global.less";
 import router from "@/router";
 import showMessage from "./util/showMessage";
-
+import eventBus from "@/util/eventBus";
 import "@/mock";
 
 Vue.config.productionTip = false;
 Vue.prototype.$showMessage = showMessage;
+Vue.prototype.$bus = eventBus
+
 // 注册自定义指令
 import vLoading from "@/directives/loading";
+import vLazy from "@/directives/lazy";
+
 Vue.directive("loading", vLoading);
+Vue.directive("lazy", vLazy);
 new Vue({
   router,
   render: (h) => h(App),

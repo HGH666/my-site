@@ -7,7 +7,7 @@
       <span class="aside" :class="{ active: item.isSelect }" @click="handleClick(item)" v-if="item.articleCount">
         {{ item.articleCount }}篇
       </span>
-      <Diractory :list="item.children" @select="handleClick(item)" />
+      <Diractory :list="item.children" @select="handleClick" />
     </li>
   </ul>
 </template>
