@@ -21,6 +21,9 @@ import ScrollTop from '@/components/ScrollTop';
 export default {
   name: "App",
   components: { Layout, SiteAside,ScrollTop },
+  mounted(){
+    console.log('this.$store.getters.comOptions',this.$store.getter)
+  }
 };
 </script>
 

@@ -1,9 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
-import "@/styles/global.less";
 import router from "@/router";
 import showMessage from "./util/showMessage";
 import eventBus from "@/util/eventBus";
+import "@/styles/global.less";
+import store from "@/store";
 import "@/mock";
 
 Vue.config.productionTip = false;
@@ -16,8 +17,10 @@ import vLazy from "@/directives/lazy";
 
 Vue.directive("loading", vLoading);
 Vue.directive("lazy", vLazy);
+
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");
 

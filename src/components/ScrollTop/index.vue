@@ -14,6 +14,7 @@ export default {
   },
   mounted(){
     this.$bus.$on('mainScroll', this.handleScroll)
+    // console.log('this.$store.state',this.$store.state)
   },
   methods:{
     handleScroll(mainDom){
